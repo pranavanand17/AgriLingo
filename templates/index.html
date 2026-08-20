@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriLingo | Smart Agriculture</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <div class="brand">
+                    <span class="logo">🌱</span>
+                    <span>Agri<span class="highlight">Lingo</span></span>
+                </div>
+
+                <p class="subtitle">
+                    Smart Agriculture Monitoring System
+                </p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+
+        </header>
+
+
+        <!-- TITLE -->
+        <section class="overview">
+
+            <div>
+                <p class="eyebrow">FARM OVERVIEW</p>
+
+                <h1>
+                    Environmental<br>
+                    <span>Conditions</span>
+                </h1>
+            </div>
+
+            <div class="updated">
+                <span>●</span> Live monitoring
+            </div>
+
+        </section>
+
+
+        <!-- SENSOR CARDS -->
+        <section class="sensor-grid">
+
+
+            <!-- SOIL MOISTURE -->
+            <div class="sensor-card">
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        🌱
+                    </div>
+
+                    <span class="badge">
+                        NORMAL
+                    </span>
+
+                </div>
+
+                <p class="sensor-name">
+                    Soil Moisture
+                </p>
+
+                <div class="value">
+                    68<span>%</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-fill"
+                        style="width: 68%;">
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span>Moisture level</span>
+                    <span>68 / 100</span>
+                </div>
+
+            </div>
+
+
+            <!-- HUMIDITY -->
+            <div class="sensor-card">
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        💧
+                    </div>
+
+                    <span class="badge">
+                        NORMAL
+                    </span>
+
+                </div>
+
+                <p class="sensor-name">
+                    Humidity
+                </p>
+
+                <div class="value">
+                    74<span>%</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-fill"
+                        style="width: 74%;">
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span>Air humidity</span>
+                    <span>74 / 100</span>
+                </div>
+
+            </div>
+
+
+            <!-- TEMPERATURE -->
+            <div class="sensor-card">
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        🌡️
+                    </div>
+
+                    <span class="badge">
+                        NORMAL
+                    </span>
+
+                </div>
+
+                <p class="sensor-name">
+                    Temperature
+                </p>
+
+                <div class="value">
+                    29.5<span>°C</span>
+                </div>
+
+                <div class="temperature-line">
+
+                    <span>20°</span>
+
+                    <div class="temp-bar">
+                        <div class="temp-point"></div>
+                    </div>
+
+                    <span>40°</span>
+
+                </div>
+
+                <div class="card-bottom">
+                    <span>Current temperature</span>
+                    <span>29.5 °C</span>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <span>
+                AgriLingo
+            </span>
+
+            <span>
+                Smart farming • Real-time monitoring
+            </span>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

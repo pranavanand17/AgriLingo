@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriLingo | Sign Up</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="auth-body">
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <a href="{{ url_for('home') }}" class="auth-logo">
+                AgriLingo
+            </a>
+
+
+            <div class="auth-header">
+
+                <p class="auth-eyebrow">
+                    FARMER PORTAL
+                </p>
+
+                <h1>Create your account.</h1>
+
+                <p>
+                    Start monitoring your farm with AgriLingo.
+                </p>
+
+            </div>
+
+
+            {% if error %}
+                <div class="auth-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+
+            <form method="POST" class="auth-form">
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Choose a username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="auth-submit">
+
+                    Create Account
+
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                <span>Already have an account?</span>
+
+                <a href="{{ url_for('login') }}">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

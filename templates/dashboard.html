@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriLingo | Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body class="dashboard-body">
+
+    <main class="dashboard">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <a href="{{ url_for('home') }}"
+               class="dashboard-logo">
+
+                AgriLingo
+
+            </a>
+
+
+            <a href="{{ url_for('logout') }}"
+               class="dashboard-logout">
+
+                Logout
+
+            </a>
+
+        </header>
+
+
+        <!-- DASHBOARD CONTENT -->
+
+        <section class="dashboard-content">
+
+
+            <!-- SENSOR OPTIONS -->
+
+            <div class="sensor-grid">
+
+
+                <!-- SOIL MOISTURE -->
+
+                <a href="#"
+                   class="dashboard-card">
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+                    <div class="card-content">
+
+                        <h2>
+                            Soil Moisture
+                        </h2>
+
+                        <p>
+                            View soil moisture
+                            conditions.
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- HUMIDITY -->
+
+                <a href="#"
+                   class="dashboard-card">
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+                    <div class="card-content">
+
+                        <h2>
+                            Humidity
+                        </h2>
+
+                        <p>
+                            View current
+                            humidity levels.
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- TEMPERATURE -->
+
+                <a href="#"
+                   class="dashboard-card">
+
+                    <div class="card-number">
+                        03
+                    </div>
+
+                    <div class="card-content">
+
+                        <h2>
+                            Temperature
+                        </h2>
+
+                        <p>
+                            View current
+                            temperature.
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- CHATBOT -->
+
+            <section class="chat-section">
+
+
+                <!-- CHAT MESSAGES -->
+
+                <div id="chat-messages"
+                     class="chat-messages">
+
+                </div>
+
+
+                <!-- CHAT INPUT -->
+
+                <div class="chat-input">
+
+
+                    <input
+                        type="text"
+                        id="chat-message"
+                        placeholder="Ask AgriLingo anything about your farm..."
+                        autocomplete="off"
+                    >
+
+
+                    <!-- VOICE BUTTON -->
+
+                    <button
+                        class="voice-button"
+                        type="button"
+                        disabled
+                        title="Voice assistant coming soon">
+
+                        🎙
+
+                    </button>
+
+
+                    <!-- SEND BUTTON -->
+
+                    <button
+                        class="send-button"
+                        type="button"
+                        onclick="sendMessage()"
+                        title="Send message">
+
+                        ↑
+
+                    </button>
+
+
+                </div>
+
+
+                <p class="chat-hint">
+                    AgriLingo Assistant
+                </p>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- CHAT JAVASCRIPT -->
+
+    <script>
+
+        async function sendMessage() {
+
+            const input =
+                document.getElementById("chat-message");
+
+            const messages =
+                document.getElementById("chat-messages");
+
+
+            const message =
+                input.value.trim();
+
+
+            // Don't send empty messages
+
+            if (!message) {
+                return;
+            }
+
+
+            // -------------------------
+            // USER MESSAGE
+            // -------------------------
+
+            const userMessage =
+                document.createElement("div");
+
+            userMessage.className =
+                "chat-message user";
+
+            userMessage.textContent =
+                message;
+
+            messages.appendChild(userMessage);
+
+
+            // Clear input
+
+            input.value = "";
+
+
+            // -------------------------
+            // THINKING MESSAGE
+            // -------------------------
+
+            const thinking =
+                document.createElement("div");
+
+            thinking.className =
+                "chat-message assistant";
+
+            thinking.textContent =
+                "Thinking...";
+
+            messages.appendChild(thinking);
+
+
+            // Scroll to bottom
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+
+            // -------------------------
+            // SEND TO FLASK
+            // -------------------------
+
+            try {
+
+                const response =
+                    await fetch("/chat", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            message: message
+                        })
+
+                    });
+
+
+                const data =
+                    await response.json();
+
+
+                // -------------------------
+                // AI RESPONSE
+                // -------------------------
+
+                if (data.response) {
+
+                    thinking.textContent =
+                        data.response;
+
+                }
+
+                else if (data.error) {
+
+                    thinking.textContent =
+                        data.error;
+
+                }
+
+                else {
+
+                    thinking.textContent =
+                        "Something went wrong.";
+
+                }
+
+
+            }
+
+            catch (error) {
+
+                thinking.textContent =
+                    "Unable to connect to AgriLingo.";
+
+                console.error(error);
+
+            }
+
+
+            // Scroll to bottom
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        }
+
+
+        // -------------------------
+        // ENTER TO SEND
+        // -------------------------
+
+        document
+            .getElementById("chat-message")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+
+                        event.preventDefault();
+
+                        sendMessage();
+
+                    }
+
+                }
+            );
+
+    </script>
+
+
+</body>
+
+</html>
