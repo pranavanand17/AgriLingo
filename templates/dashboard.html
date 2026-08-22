@@ -21,7 +21,9 @@
     <main class="dashboard">
 
 
-        <!-- HEADER -->
+        <!-- =========================
+             HEADER
+        ========================== -->
 
         <header class="dashboard-header">
 
@@ -43,12 +45,16 @@
         </header>
 
 
-        <!-- DASHBOARD CONTENT -->
+        <!-- =========================
+             DASHBOARD CONTENT
+        ========================== -->
 
         <section class="dashboard-content">
 
 
-            <!-- SENSOR OPTIONS -->
+            <!-- =========================
+                 SENSOR CARDS
+            ========================== -->
 
             <div class="sensor-grid">
 
@@ -143,7 +149,9 @@
             </div>
 
 
-            <!-- CHATBOT -->
+            <!-- =========================
+                 CHATBOT
+            ========================== -->
 
             <section class="chat-section">
 
@@ -152,7 +160,6 @@
 
                 <div id="chat-messages"
                      class="chat-messages">
-
                 </div>
 
 
@@ -173,9 +180,9 @@
 
                     <button
                         class="voice-button"
+                        id="voice-button"
                         type="button"
-                        disabled
-                        title="Voice assistant coming soon">
+                        title="Speak to AgriLingo">
 
                         🎙
 
@@ -186,8 +193,8 @@
 
                     <button
                         class="send-button"
+                        id="send-button"
                         type="button"
-                        onclick="sendMessage()"
                         title="Send message">
 
                         ↑
@@ -198,8 +205,11 @@
                 </div>
 
 
-                <p class="chat-hint">
+                <p class="chat-hint"
+                   id="chat-hint">
+
                     AgriLingo Assistant
+
                 </p>
 
 
@@ -212,9 +222,16 @@
     </main>
 
 
-    <!-- CHAT JAVASCRIPT -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script>
+
+
+        // ==================================================
+        // CHAT
+        // ==================================================
 
         async function sendMessage() {
 
@@ -273,8 +290,6 @@
             messages.appendChild(thinking);
 
 
-            // Scroll to bottom
-
             messages.scrollTop =
                 messages.scrollHeight;
 
@@ -307,7 +322,7 @@
 
 
                 // -------------------------
-                // AI RESPONSE
+                // RESPONSE
                 // -------------------------
 
                 if (data.response) {
@@ -336,15 +351,16 @@
 
             catch (error) {
 
+                console.error(
+                    "CHAT ERROR:",
+                    error
+                );
+
                 thinking.textContent =
                     "Unable to connect to AgriLingo.";
 
-                console.error(error);
-
             }
 
-
-            // Scroll to bottom
 
             messages.scrollTop =
                 messages.scrollHeight;
@@ -352,9 +368,9 @@
         }
 
 
-        // -------------------------
+        // ==================================================
         // ENTER TO SEND
-        // -------------------------
+        // ==================================================
 
         document
             .getElementById("chat-message")
@@ -372,6 +388,19 @@
 
                 }
             );
+
+
+        // ==================================================
+        // SEND BUTTON
+        // ==================================================
+
+        document
+            .getElementById("send-button")
+            .addEventListener(
+                "click",
+                sendMessage
+            );
+
 
     </script>
 

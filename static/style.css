@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,21 +17,36 @@ body {
     font-family: 'Inter', sans-serif;
 
     background:
-        radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.12), transparent 30%),
-        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08), transparent 30%),
-        #07110d;
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(0, 0, 0, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(0, 0, 0, 0.05),
+            transparent 30%
+        ),
+        #b7f34a;
 
-    color: #f1f5f3;
+    color: #000000;
 }
+
+
+/* =========================================================
+   DASHBOARD BACKGROUND GLOW
+========================================================= */
 
 .background-glow {
     position: fixed;
+
     width: 500px;
     height: 500px;
 
-    background: rgba(34, 197, 94, 0.06);
+    background: rgba(0, 0, 0, 0.06);
 
     filter: blur(120px);
+
     border-radius: 50%;
 
     top: -200px;
@@ -35,97 +55,129 @@ body {
     pointer-events: none;
 }
 
+
+/* =========================================================
+   DASHBOARD CONTAINER
+========================================================= */
+
 .dashboard {
     width: min(1200px, 92%);
+
     margin: auto;
+
     padding: 55px 0 30px;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
     margin-bottom: 90px;
 }
 
+
 .brand {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 
     font-size: 27px;
+
     font-weight: 800;
+
     letter-spacing: -1px;
 }
+
 
 .logo {
     font-size: 30px;
 }
 
+
 .highlight {
-    color: #4ade80;
+    color: #000000;
 }
 
+
 .subtitle {
-    color: #71827a;
+    color: #26351f;
+
     font-size: 13px;
 
     margin-top: 6px;
 }
 
+
 .status {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
     padding: 10px 15px;
 
-    border: 1px solid rgba(74, 222, 128, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
     border-radius: 50px;
 
-    background: rgba(74, 222, 128, 0.05);
+    background: rgba(255, 255, 255, 0.15);
 
-    color: #86efac;
+    color: #000000;
 
     font-size: 13px;
+
     font-weight: 600;
 }
+
 
 .status-dot {
     width: 7px;
     height: 7px;
 
-    background: #4ade80;
+    background: #000000;
+
     border-radius: 50%;
 
-    box-shadow: 0 0 12px #4ade80;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 }
 
 
-/* OVERVIEW */
+/* =========================================================
+   OVERVIEW
+========================================================= */
 
 .overview {
     display: flex;
+
     justify-content: space-between;
     align-items: end;
 
     margin-bottom: 35px;
 }
 
+
 .eyebrow {
-    color: #4ade80;
+    color: #000000;
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: 2px;
 
     margin-bottom: 14px;
 }
+
 
 .overview h1 {
     font-size: clamp(38px, 5vw, 62px);
@@ -135,22 +187,27 @@ body {
     letter-spacing: -3px;
 }
 
+
 .overview h1 span {
-    color: #6ee7a0;
+    color: #000000;
 }
 
+
 .updated {
-    color: #6b7c74;
+    color: #26351f;
 
     font-size: 13px;
 }
 
+
 .updated span {
-    color: #4ade80;
+    color: #000000;
 }
 
 
-/* SENSOR GRID */
+/* =========================================================
+   SENSOR GRID
+========================================================= */
 
 .sensor-grid {
     display: grid;
@@ -161,7 +218,9 @@ body {
 }
 
 
-/* CARDS */
+/* =========================================================
+   SENSOR CARDS
+========================================================= */
 
 .sensor-card {
     position: relative;
@@ -170,10 +229,11 @@ body {
 
     min-height: 310px;
 
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
     border-radius: 24px;
 
-    background: rgba(255, 255, 255, 0.035);
+    background: rgba(255, 255, 255, 0.15);
 
     backdrop-filter: blur(15px);
 
@@ -182,146 +242,168 @@ body {
     transition: 0.3s ease;
 }
 
+
 .sensor-card:hover {
     transform: translateY(-6px);
 
-    border-color: rgba(74, 222, 128, 0.25);
+    border-color: #000000;
 
-    background: rgba(255, 255, 255, 0.055);
+    background: rgba(0, 0, 0, 0.08);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.25),
-        0 0 40px rgba(34, 197, 94, 0.05);
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 40px rgba(0, 0, 0, 0.05);
 }
 
 
-/* CARD TOP */
+/* =========================================================
+   CARD TOP
+========================================================= */
 
 .card-top {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
+
 
 .icon {
     width: 48px;
     height: 48px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 14px;
 
-    background: rgba(74, 222, 128, 0.08);
+    background: rgba(0, 0, 0, 0.08);
 
     font-size: 22px;
 }
+
 
 .badge {
     padding: 6px 10px;
 
     border-radius: 20px;
 
-    background: rgba(74, 222, 128, 0.08);
+    background: rgba(0, 0, 0, 0.08);
 
-    color: #86efac;
+    color: #000000;
 
     font-size: 9px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
 }
 
 
-/* SENSOR TEXT */
+/* =========================================================
+   SENSOR TEXT
+========================================================= */
 
 .sensor-name {
     margin-top: 38px;
 
-    color: #84948d;
+    color: #26351f;
 
     font-size: 13px;
+
     font-weight: 500;
 }
+
 
 .value {
     margin-top: 5px;
 
     font-size: 55px;
+
     font-weight: 700;
 
     letter-spacing: -3px;
 }
 
+
 .value span {
     margin-left: 5px;
 
-    color: #6c8076;
+    color: #33452b;
 
     font-size: 22px;
+
     font-weight: 500;
 
     letter-spacing: 0;
 }
 
 
-/* PROGRESS */
+/* =========================================================
+   PROGRESS
+========================================================= */
 
 .progress {
     width: 100%;
+
     height: 5px;
 
     margin-top: 25px;
 
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.12);
 
     border-radius: 10px;
 
     overflow: hidden;
 }
 
+
 .progress-fill {
     height: 100%;
 
-    background: linear-gradient(
-        90deg,
-        #22c55e,
-        #86efac
-    );
+    background: #000000;
 
     border-radius: inherit;
 }
 
 
-/* TEMPERATURE */
+/* =========================================================
+   TEMPERATURE
+========================================================= */
 
 .temperature-line {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     margin-top: 25px;
 
-    color: #63736c;
+    color: #26351f;
 
     font-size: 10px;
 }
+
 
 .temp-bar {
     position: relative;
 
     height: 5px;
+
     flex: 1;
 
     background: linear-gradient(
         90deg,
-        #22c55e,
-        #facc15,
-        #ef4444
+        #000000,
+        #718c3d,
+        #c96b32
     );
 
     border-radius: 10px;
 }
+
 
 .temp-point {
     position: absolute;
@@ -334,58 +416,70 @@ body {
 
     transform: translate(-50%, -50%);
 
-    background: white;
+    background: #b7f34a;
 
-    border: 3px solid #22c55e;
+    border: 3px solid #000000;
 
     border-radius: 50%;
 
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
-/* CARD BOTTOM */
+/* =========================================================
+   CARD BOTTOM
+========================================================= */
 
 .card-bottom {
     position: absolute;
 
     bottom: 25px;
+
     left: 28px;
     right: 28px;
 
     display: flex;
+
     justify-content: space-between;
 
-    color: #53635c;
+    color: #33452b;
 
     font-size: 10px;
 }
 
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
     display: flex;
+
     justify-content: space-between;
 
     margin-top: 50px;
 
     padding-top: 25px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
 
-    color: #46554f;
+    color: #33452b;
 
     font-size: 11px;
 }
 
+
 footer span:first-child {
-    color: #6b7c74;
+    color: #26351f;
+
     font-weight: 600;
 }
 
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 850px) {
 
@@ -399,10 +493,13 @@ footer span:first-child {
 
     .overview {
         align-items: start;
+
         flex-direction: column;
+
         gap: 20px;
     }
 }
+
 
 @media (max-width: 500px) {
 
@@ -427,13 +524,15 @@ footer span:first-child {
     }
 }
 
-/* =========================
+
+/* =========================================================
    LANDING PAGE
-========================= */
+========================================================= */
 
 .landing-body {
-    background: #000000;
-    color: #ffffff;
+    background: #b7f34a;
+
+    color: #000000;
 
     overflow: hidden;
 }
@@ -444,6 +543,7 @@ footer span:first-child {
     height: 100vh;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -453,7 +553,9 @@ footer span:first-child {
 
 .landing-content {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
@@ -467,6 +569,8 @@ footer span:first-child {
 
     letter-spacing: -6px;
 
+    color: #000000;
+
     animation: logoEnter 1.5s ease forwards;
 
     opacity: 0;
@@ -476,7 +580,7 @@ footer span:first-child {
 .landing-subtitle {
     margin-top: 15px;
 
-    color: #888888;
+    color: #26351f;
 
     font-size: 14px;
 
@@ -488,7 +592,9 @@ footer span:first-child {
 }
 
 
-/* BUTTONS */
+/* =========================================================
+   LANDING BUTTONS
+========================================================= */
 
 .landing-buttons {
     display: flex;
@@ -508,9 +614,11 @@ footer span:first-child {
 
     padding: 15px 0;
 
-    border: 1px solid #ffffff;
+    border: 1px solid #000000;
 
-    color: #ffffff;
+    color: #000000;
+
+    background: transparent;
 
     text-decoration: none;
 
@@ -525,17 +633,17 @@ footer span:first-child {
 
 
 .landing-button:hover {
-    background: #ffffff;
+    background: #000000;
 
-    color: #000000;
+    color: #b7f34a;
 
     transform: translateY(-3px);
 }
 
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* =========================================================
+   LANDING ANIMATIONS
+========================================================= */
 
 @keyframes logoEnter {
 
@@ -558,7 +666,6 @@ footer span:first-child {
 
         letter-spacing: -6px;
     }
-
 }
 
 
@@ -575,7 +682,6 @@ footer span:first-child {
 
         transform: translateY(0);
     }
-
 }
 
 
@@ -592,16 +698,17 @@ footer span:first-child {
 
         transform: translateY(0);
     }
-
 }
 
-/* =========================
+
+/* =========================================================
    AUTH PAGES
-========================= */
+========================================================= */
 
 .auth-body {
-    background: #000000;
-    color: #ffffff;
+    background: #b7f34a;
+
+    color: #000000;
 
     min-height: 100vh;
 }
@@ -611,6 +718,7 @@ footer span:first-child {
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -620,6 +728,7 @@ footer span:first-child {
 
 .auth-container {
     width: 100%;
+
     max-width: 430px;
 
     animation: authEnter 0.8s ease forwards;
@@ -633,11 +742,12 @@ footer span:first-child {
 .auth-logo {
     display: inline-block;
 
-    color: #ffffff;
+    color: #000000;
 
     text-decoration: none;
 
     font-size: 22px;
+
     font-weight: 700;
 
     letter-spacing: -1px;
@@ -654,9 +764,10 @@ footer span:first-child {
 
 
 .auth-eyebrow {
-    color: #777777;
+    color: #26351f;
 
     font-size: 10px;
+
     font-weight: 600;
 
     letter-spacing: 3px;
@@ -666,6 +777,8 @@ footer span:first-child {
 
 
 .auth-header h1 {
+    color: #000000;
+
     font-size: 42px;
 
     line-height: 1.05;
@@ -679,7 +792,7 @@ footer span:first-child {
 
 
 .auth-header > p:last-child {
-    color: #777777;
+    color: #26351f;
 
     font-size: 13px;
 
@@ -692,9 +805,9 @@ footer span:first-child {
 .auth-error {
     padding: 12px 14px;
 
-    border: 1px solid #444444;
+    border: 1px solid #000000;
 
-    color: #ffffff;
+    color: #000000;
 
     font-size: 12px;
 
@@ -721,7 +834,7 @@ footer span:first-child {
 
 
 .form-group label {
-    color: #aaaaaa;
+    color: #26351f;
 
     font-size: 11px;
 
@@ -738,11 +851,11 @@ footer span:first-child {
 
     height: 52px;
 
-    background: #080808;
+    background: rgba(255, 255, 255, 0.15);
 
-    border: 1px solid #333333;
+    border: 1px solid rgba(0, 0, 0, 0.35);
 
-    color: #ffffff;
+    color: #000000;
 
     padding: 0 15px;
 
@@ -757,27 +870,29 @@ footer span:first-child {
 
 
 .form-group input::placeholder {
-    color: #444444;
+    color: #4b5b42;
 }
 
 
 .form-group input:focus {
-    border-color: #ffffff;
+    border-color: #000000;
 }
 
 
-/* SUBMIT */
+/* =========================================================
+   AUTH SUBMIT
+========================================================= */
 
 .auth-submit {
     width: 100%;
 
     height: 52px;
 
-    border: 1px solid #ffffff;
+    border: 1px solid #000000;
 
-    background: #ffffff;
+    background: #000000;
 
-    color: #000000;
+    color: #b7f34a;
 
     font-family: inherit;
 
@@ -811,9 +926,9 @@ footer span:first-child {
 
 
 .auth-submit:hover {
-    background: #000000;
+    background: #b7f34a;
 
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -822,7 +937,9 @@ footer span:first-child {
 }
 
 
-/* SWITCH */
+/* =========================================================
+   AUTH SWITCH
+========================================================= */
 
 .auth-switch {
     display: flex;
@@ -835,27 +952,29 @@ footer span:first-child {
 
     font-size: 12px;
 
-    color: #555555;
+    color: #33452b;
 }
 
 
 .auth-switch a {
-    color: #ffffff;
+    color: #000000;
 
     text-decoration: none;
 
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid #26351f;
 
     transition: border-color 0.2s ease;
 }
 
 
 .auth-switch a:hover {
-    border-color: #ffffff;
+    border-color: #000000;
 }
 
 
-/* ANIMATION */
+/* =========================================================
+   AUTH ANIMATION
+========================================================= */
 
 @keyframes authEnter {
 
@@ -870,11 +989,12 @@ footer span:first-child {
 
         transform: translateY(0);
     }
-
 }
 
 
-/* MOBILE */
+/* =========================================================
+   AUTH MOBILE
+========================================================= */
 
 @media (max-width: 500px) {
 
@@ -893,16 +1013,17 @@ footer span:first-child {
     .auth-header h1 {
         font-size: 34px;
     }
-
 }
 
-/* =========================
+
+/* =========================================================
    DASHBOARD
-========================= */
+========================================================= */
 
 .dashboard-body {
-    background: #000000;
-    color: #ffffff;
+    background: #b7f34a;
+
+    color: #000000;
 
     min-height: 100vh;
 }
@@ -910,13 +1031,16 @@ footer span:first-child {
 
 .dashboard {
     width: 90%;
+
     max-width: 1100px;
 
     margin: auto;
 }
 
 
-/* HEADER */
+/* =========================================================
+   DASHBOARD HEADER
+========================================================= */
 
 .dashboard-header {
     height: 100px;
@@ -924,14 +1048,15 @@ footer span:first-child {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
-    border-bottom: 1px solid #222222;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 
 .dashboard-logo {
-    color: #ffffff;
+    color: #000000;
 
     text-decoration: none;
 
@@ -944,7 +1069,7 @@ footer span:first-child {
 
 
 .dashboard-logout {
-    color: #777777;
+    color: #33452b;
 
     text-decoration: none;
 
@@ -957,18 +1082,22 @@ footer span:first-child {
 
 
 .dashboard-logout:hover {
-    color: #ffffff;
+    color: #000000;
 }
 
 
-/* CONTENT */
+/* =========================================================
+   DASHBOARD CONTENT
+========================================================= */
 
 .dashboard-content {
     padding-top: 100px;
 }
 
 
-/* SENSOR GRID */
+/* =========================================================
+   SENSOR GRID
+========================================================= */
 
 .sensor-grid {
     display: grid;
@@ -980,7 +1109,9 @@ footer span:first-child {
 }
 
 
-/* CARDS */
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
 
 .dashboard-card {
     position: relative;
@@ -989,9 +1120,11 @@ footer span:first-child {
 
     padding: 30px;
 
-    border: 1px solid #292929;
+    border: 1px solid rgba(0, 0, 0, 0.25);
 
-    color: #ffffff;
+    color: #000000;
+
+    background: rgba(255, 255, 255, 0.15);
 
     text-decoration: none;
 
@@ -1009,11 +1142,11 @@ footer span:first-child {
 
 
 .dashboard-card:hover {
-    background: #ffffff;
+    background: #000000;
 
-    color: #000000;
+    color: #b7f34a;
 
-    border-color: #ffffff;
+    border-color: #000000;
 
     transform: translateY(-5px);
 }
@@ -1022,7 +1155,7 @@ footer span:first-child {
 .card-number {
     font-size: 10px;
 
-    color: #555555;
+    color: #4b5b42;
 
     letter-spacing: 2px;
 }
@@ -1030,7 +1163,7 @@ footer span:first-child {
 
 .dashboard-card:hover
 .card-number {
-    color: #777777;
+    color: #8ba76d;
 }
 
 
@@ -1048,11 +1181,17 @@ footer span:first-child {
 .card-content p {
     max-width: 180px;
 
-    color: #666666;
+    color: #33452b;
 
     font-size: 12px;
 
     line-height: 1.6;
+}
+
+
+.dashboard-card:hover
+.card-content p {
+    color: #9ab47b;
 }
 
 
@@ -1076,9 +1215,9 @@ footer span:first-child {
 }
 
 
-/* =========================
+/* =========================================================
    CHATBOT
-========================= */
+========================================================= */
 
 .chat-section {
     margin-top: 70px;
@@ -1088,15 +1227,19 @@ footer span:first-child {
 
 
 .chat-input {
+    position: relative;
+
+    z-index: 10;
+
     height: 62px;
 
     display: flex;
 
     align-items: center;
 
-    border: 1px solid #292929;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 
-    background: #080808;
+    background: rgba(255, 255, 255, 0.15);
 
     transition:
         border-color 0.2s ease;
@@ -1104,12 +1247,16 @@ footer span:first-child {
 
 
 .chat-input:focus-within {
-    border-color: #555555;
+    border-color: #000000;
 }
 
 
 .chat-input input {
+    display: block;
+
     flex: 1;
+
+    width: auto;
 
     height: 100%;
 
@@ -1123,16 +1270,25 @@ footer span:first-child {
 
     background: transparent;
 
-    color: #ffffff;
+    color: #000000;
 
-    font-family: inherit;
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 13px;
+
+    pointer-events: auto;
+}
+
+
+.chat-input input:focus {
+    border: none;
+
+    outline: none;
 }
 
 
 .chat-input input::placeholder {
-    color: #555555;
+    color: #4b5b42;
 }
 
 
@@ -1146,11 +1302,11 @@ footer span:first-child {
 
     background: transparent;
 
-    color: #777777;
+    color: #000000;
 
     font-size: 17px;
 
-    cursor: default;
+    cursor: pointer;
 
     margin: 0;
 
@@ -1163,12 +1319,22 @@ footer span:first-child {
 }
 
 
+.chat-input button {
+    pointer-events: auto;
+}
+
+
+.chat-input button:disabled {
+    pointer-events: none;
+}
+
+
 .chat-hint {
     margin-top: 12px;
 
     text-align: center;
 
-    color: #444444;
+    color: #33452b;
 
     font-size: 10px;
 
@@ -1176,52 +1342,9 @@ footer span:first-child {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 800px) {
-
-    .sensor-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .dashboard-content {
-        padding-top: 60px;
-    }
-
-
-    .dashboard-card {
-        height: 220px;
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    .dashboard {
-        width: 92%;
-    }
-
-
-    .chat-input {
-        height: 55px;
-    }
-
-
-    .chat-input input {
-        padding-left: 14px;
-
-        font-size: 12px;
-    }
-
-}
-
-/* =========================
+/* =========================================================
    CHAT MESSAGES
-========================= */
+========================================================= */
 
 .chat-messages {
     display: flex;
@@ -1254,82 +1377,60 @@ footer span:first-child {
 .chat-message.user {
     align-self: flex-end;
 
-    background: #ffffff;
+    background: #000000;
 
-    color: #000000;
+    color: #b7f34a;
 }
 
 
 .chat-message.assistant {
     align-self: flex-start;
 
-    border: 1px solid #292929;
+    border: 1px solid rgba(0, 0, 0, 0.25);
 
-    background: #080808;
+    background: rgba(255, 255, 255, 0.15);
 
-    color: #ffffff;
-}
-
-/* =========================
-   CHAT INPUT FIX
-========================= */
-
-.chat-input {
-    position: relative;
-    z-index: 10;
-
-    display: flex;
-    align-items: center;
-
-    width: 100%;
-    height: 62px;
-
-    border: 1px solid #292929;
-    background: #080808;
+    color: #000000;
 }
 
 
-.chat-input input {
-    display: block;
+/* =========================================================
+   DASHBOARD RESPONSIVE
+========================================================= */
 
-    flex: 1;
+@media (max-width: 800px) {
 
-    width: auto;
-    height: 100%;
+    .sensor-grid {
+        grid-template-columns: 1fr;
+    }
 
-    margin: 0;
-    padding: 0 20px;
 
-    border: none;
-    outline: none;
+    .dashboard-content {
+        padding-top: 60px;
+    }
 
-    background: transparent;
 
-    color: #ffffff;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-
-    pointer-events: auto;
+    .dashboard-card {
+        height: 220px;
+    }
 }
 
 
-.chat-input input:focus {
-    border: none;
-    outline: none;
-}
+@media (max-width: 500px) {
+
+    .dashboard {
+        width: 92%;
+    }
 
 
-.chat-input input::placeholder {
-    color: #555555;
-}
+    .chat-input {
+        height: 55px;
+    }
 
 
-.chat-input button {
-    pointer-events: auto;
-}
+    .chat-input input {
+        padding-left: 14px;
 
-
-.chat-input button:disabled {
-    pointer-events: none;
+        font-size: 12px;
+    }
 }
