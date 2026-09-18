@@ -526,6 +526,104 @@ footer span:first-child {
 
 
 /* =========================================================
+   VOICE PIPELINE
+========================================================= */
+
+.voice-results {
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+.voice-status {
+    color: #26351f;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+
+.voice-result-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+.voice-result-row span {
+    color: #33452b;
+    font-weight: 600;
+}
+
+
+.voice-result-row strong {
+    font-weight: 500;
+}
+
+
+.tamil-response-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+
+.play-tamil-button {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border: 1px solid #000000;
+    background: transparent;
+    color: #000000;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+
+.play-tamil-button:hover:not(:disabled) {
+    background: #000000;
+    color: #b7f34a;
+}
+
+
+.play-tamil-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+
+.voice-error {
+    min-height: 16px;
+    margin-top: 10px;
+    color: #7d241c;
+    font-size: 12px;
+}
+
+
+.voice-button.recording {
+    background: #000000;
+    color: #b7f34a;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.14);
+}
+
+
+@media (max-width: 500px) {
+    .voice-result-row {
+        grid-template-columns: 1fr;
+        gap: 3px;
+    }
+}
+
+
+/* =========================================================
    LANDING PAGE
 ========================================================= */
 
