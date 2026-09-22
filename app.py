@@ -51,12 +51,22 @@ client = genai.Client(
     api_key=api_key
 )
 
+GEMINI_MODEL = "gemini-3.6-flash"
+
 
 # =========================================================
 # TEMPORARY USER STORAGE
 # =========================================================
 
 users = {}
+
+
+class VoicePipelineError(Exception):
+    """Safe error message for a specific voice-pipeline stage."""
+
+    def __init__(self, message, status_code=502):
+        super().__init__(message)
+        self.status_code = status_code
 
 
 def translate_text(text, source_language, target_language):
@@ -69,10 +79,14 @@ additional formatting.
 Text:
 {text}
 """
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-    )
+    try:
+        response = client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=prompt,
+        )
+    except Exception as error:
+        raise VoicePipelineError("Gemini translation is unavailable.") from error
+
     translated = (response.text or "").strip()
     if not translated:
         raise ValueError("Gemini returned an empty translation")
@@ -93,18 +107,22 @@ def rag_query(english_text):
 
 
 def transcribe_tamil(audio_data, content_type):
-    response = requests.post(
-        "https://api.deepgram.com/v1/listen",
-        params={"model": "nova-3", "language": "ta", "smart_format": "true"},
-        headers={
-            "Authorization": f"Token {deepgram_api_key}",
-            "Content-Type": content_type or "audio/webm",
-        },
-        data=audio_data,
-        timeout=60,
-    )
+    try:
+        response = requests.post(
+            "https://api.deepgram.com/v1/listen",
+            params={"model": "nova-3", "language": "ta", "smart_format": "true"},
+            headers={
+                "Authorization": f"Token {deepgram_api_key}",
+                "Content-Type": content_type or "audio/webm",
+            },
+            data=audio_data,
+            timeout=60,
+        )
+    except requests.RequestException as error:
+        raise VoicePipelineError("Deepgram speech transcription is unavailable.") from error
+
     if response.status_code != 200:
-        raise RuntimeError("Deepgram could not process the audio")
+        raise VoicePipelineError("Deepgram could not process the audio.")
     result = response.json()
     return (
         result.get("results", {})
@@ -116,9 +134,12 @@ def transcribe_tamil(audio_data, content_type):
 
 
 def synthesize_tamil(text):
-    audio_buffer = io.BytesIO()
-    gTTS(text=text, lang="ta").write_to_fp(audio_buffer)
-    return audio_buffer.getvalue()
+    try:
+        audio_buffer = io.BytesIO()
+        gTTS(text=text, lang="ta").write_to_fp(audio_buffer)
+        return audio_buffer.getvalue()
+    except Exception as error:
+        raise VoicePipelineError("Tamil text-to-speech is unavailable.") from error
 
 
 # =========================================================
@@ -299,7 +320,7 @@ Farmer's question:
 
         response = client.models.generate_content(
 
-            model="gemini-3.1-flash-lite",
+            model=GEMINI_MODEL,
 
             contents=prompt
 
@@ -366,9 +387,9 @@ def speech():
             "audio": base64.b64encode(audio_output).decode("ascii"),
             "audio_mime_type": "audio/mpeg",
         })
-    except requests.RequestException:
-        app.logger.exception("Deepgram request error")
-        return jsonify({"error": "Speech transcription service is unavailable."}), 502
+    except VoicePipelineError as error:
+        app.logger.exception("Voice pipeline stage failed: %s", error)
+        return jsonify({"error": str(error)}), error.status_code
     except Exception as error:
         app.logger.exception("Speech pipeline error: %s", error)
         return jsonify({"error": "Unable to complete the voice response."}), 500
